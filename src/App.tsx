@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { FeaturedLinks } from './components/FeaturedLinks';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+import { ParticleUniverse } from './components/ParticleUniverse';
 import { ProfileHero } from './components/ProfileHero';
 import { ProjectGrid } from './components/ProjectGrid';
 import { QRCodeModal } from './components/QRCodeModal';
@@ -41,10 +42,13 @@ export function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[var(--bg-primary)] text-[var(--text-primary)]">
-      {/* Ambient top gradient */}
+      {/* Interactive Mouse-Reactive Particle Universe */}
+      <ParticleUniverse />
+
+      {/* Ambient top aurora gradient */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-x-0 top-0 h-[420px] bg-[radial-gradient(ellipse_at_top,var(--accent-glow),transparent_70%)]"
+        className="pointer-events-none fixed inset-x-0 top-0 z-0 h-[520px] bg-[radial-gradient(ellipse_at_top,var(--accent-glow),transparent_70%)]"
       />
 
       <Header

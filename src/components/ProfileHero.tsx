@@ -1,68 +1,49 @@
-import React, { useState } from 'react';
-import { ArrowDownRight, MapPin } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, ArrowDownRight, MapPin } from 'lucide-react';
 import { siteConfig } from '../config/site.config';
+import { CinematicEmblem } from './CinematicEmblem';
 
 export const ProfileHero: React.FC = () => {
-  const { name, username, tagline, bio, avatar, location } = siteConfig.profile;
-  const [imgError, setImgError] = useState(false);
-
-  const initials =
-    name
-      .split(/\s+/)
-      .map((part) => part[0])
-      .join('')
-      .slice(0, 2)
-      .toUpperCase() || 'W3';
-
-  const showImage = Boolean(avatar) && !imgError;
+  const { name, username, tagline, bio, location } = siteConfig.profile;
+  const letters = name.toUpperCase().split('');
 
   return (
     <section
       aria-labelledby="profile-heading"
-      className="py-12 sm:py-16 lg:py-24"
+      className="relative py-12 sm:py-16 lg:py-24"
     >
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Artwork: Top on mobile, Right on desktop */}
         <div className="order-1 flex justify-center lg:order-2 lg:col-span-5 lg:justify-end">
-          <div className="animate-float relative">
-            <div
-              className="absolute -inset-4 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.28),rgba(59,130,246,0.12)_55%,transparent_75%)] blur-xl"
-              aria-hidden="true"
-            />
-            <div className="relative flex h-44 w-44 sm:h-56 sm:w-56 lg:h-72 lg:w-72 items-center justify-center overflow-hidden rounded-full border border-[var(--border-strong)] bg-[var(--bg-surface)] shadow-2xl">
-              {showImage ? (
-                <img
-                  src={avatar!}
-                  alt={`${name} W3G monogram artwork`}
-                  onError={() => setImgError(true)}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <span className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-primary)]">
-                  {initials}
-                </span>
-              )}
-            </div>
-          </div>
+          <CinematicEmblem />
         </div>
 
         {/* Introduction: Below artwork on mobile, Left on desktop */}
         <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:col-span-7 lg:items-start lg:text-left">
           {username && (
-            <span className="animate-reveal inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] px-3.5 py-1 text-xs font-medium tracking-wide text-[var(--text-secondary)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-violet-500" aria-hidden="true" />
+            <span className="animate-reveal inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)]/80 px-3.5 py-1 text-xs font-medium tracking-wide text-[var(--text-secondary)] backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-violet-500 animate-pulse" aria-hidden="true" />
               {username}
             </span>
           )}
 
           <h1
             id="profile-heading"
-            className="animate-reveal animate-delay-1 hero-title mt-4 font-display font-extrabold uppercase text-[var(--text-primary)]"
+            aria-label={name}
+            className="hero-title mt-4 font-display font-extrabold uppercase text-[var(--text-primary)]"
           >
-            {name}
+            {letters.map((char, idx) => (
+              <span
+                key={`${char}-${idx}`}
+                className="animate-reveal inline-block"
+                style={{ animationDelay: `${idx * 45}ms` }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </span>
+            ))}
           </h1>
 
-          <p className="animate-reveal animate-delay-2 mt-3 text-base sm:text-lg lg:text-xl font-semibold tracking-tight text-violet-500 dark:text-violet-400">
+          <p className="animate-reveal animate-delay-2 mt-3 bg-gradient-to-r from-violet-400 via-indigo-400 to-blue-400 bg-clip-text text-base sm:text-lg lg:text-xl font-semibold tracking-tight text-transparent">
             {tagline}
           </p>
 
@@ -80,10 +61,10 @@ export const ProfileHero: React.FC = () => {
           <div className="animate-reveal animate-delay-4 mt-7 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             <a
               href="#links"
-              className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-violet-500 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+              className="group inline-flex items-center gap-2 rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_24px_rgba(139,92,246,0.35)] transition-all hover:bg-violet-500 hover:shadow-[0_0_32px_rgba(139,92,246,0.5)] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
             >
               <span>Explore Links</span>
-              <ArrowDownRight className="h-4 w-4" aria-hidden="true" />
+              <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" aria-hidden="true" />
             </a>
             <a
               href="#contact"
@@ -93,6 +74,17 @@ export const ProfileHero: React.FC = () => {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Subtle scroll indicator */}
+      <div className="mt-10 hidden lg:flex justify-center">
+        <a
+          href="#links"
+          aria-label="Scroll to links"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-subtle)] text-[var(--text-secondary)] transition-colors hover:border-violet-500/40 hover:text-violet-400"
+        >
+          <ArrowDown className="h-4 w-4 animate-bounce" aria-hidden="true" />
+        </a>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { ArrowUpRight, FolderKanban, Gamepad2, Globe, Code2, Sparkles } from 'lu
 import { type FeaturedIconName, siteConfig } from '../config/site.config';
 import { formatWhatsAppUrl, isValidDestination } from '../utils/validation';
 import { InstagramIcon, TelegramIcon, WhatsAppIcon, YouTubeIcon } from './PlatformIcons';
+import { TiltCard } from './TiltCard';
 
 const iconMap: Record<FeaturedIconName, React.FC<{ className?: string }>> = {
   youtube: YouTubeIcon,
@@ -51,42 +52,43 @@ export const FeaturedLinks: React.FC = () => {
           const isExternal = !item.resolvedUrl.startsWith('#');
 
           return (
-            <a
-              key={item.id}
-              href={item.resolvedUrl}
-              {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className={`surface-card group relative flex items-center justify-between gap-4 rounded-2xl p-4 sm:p-5 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 ${
-                item.featured ? 'ring-1 ring-violet-500/25' : ''
-              }`}
-            >
-              <div className="flex items-center gap-4 min-w-0">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] text-[var(--text-secondary)] transition-colors group-hover:border-violet-500/40 group-hover:text-violet-500">
-                  <Icon className="h-5 w-5" />
-                </div>
-
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h3 className="truncate font-display text-sm sm:text-base font-semibold text-[var(--text-primary)]">
-                      {item.title}
-                    </h3>
-                    {item.featured && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-semibold text-violet-500">
-                        <Sparkles className="h-2.5 w-2.5" aria-hidden="true" />
-                        Featured
-                      </span>
-                    )}
+            <TiltCard key={item.id}>
+              <a
+                href={item.resolvedUrl}
+                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className={`surface-card group relative flex items-center justify-between gap-4 rounded-2xl p-4 sm:p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 ${
+                  item.featured ? 'ring-1 ring-violet-500/25' : ''
+                }`}
+              >
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] text-[var(--text-secondary)] transition-colors group-hover:border-violet-500/40 group-hover:text-violet-500">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <p className="mt-0.5 truncate text-xs sm:text-sm text-[var(--text-secondary)]">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
 
-              <ArrowUpRight
-                className="h-4 w-4 shrink-0 text-[var(--text-secondary)] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-violet-500"
-                aria-hidden="true"
-              />
-            </a>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h3 className="truncate font-display text-sm sm:text-base font-semibold text-[var(--text-primary)]">
+                        {item.title}
+                      </h3>
+                      {item.featured && (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-violet-500/10 px-2 py-0.5 text-[10px] font-semibold text-violet-500">
+                          <Sparkles className="h-2.5 w-2.5" aria-hidden="true" />
+                          Featured
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-0.5 truncate text-xs sm:text-sm text-[var(--text-secondary)]">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+
+                <ArrowUpRight
+                  className="h-4 w-4 shrink-0 text-[var(--text-secondary)] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-violet-500"
+                  aria-hidden="true"
+                />
+              </a>
+            </TiltCard>
           );
         })}
       </div>
