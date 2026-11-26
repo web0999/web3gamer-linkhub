@@ -30,3 +30,4 @@ export function useScrollReveal<T extends HTMLElement>() {
 
   return { ref, isVisible };
 }
+

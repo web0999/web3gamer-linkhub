@@ -14,3 +14,4 @@
 ## 4. Hero & Scroll Reveals
 - **Character-by-character Headline**: `WEB3GAMER` animates letter-by-letter with staggered `45ms` delays (`revealUp`).
 - **Reduced Motion**: All animations and transitions collapse to `0.01ms` under `@media (prefers-reduced-motion: reduce)`.
+

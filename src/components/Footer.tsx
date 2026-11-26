@@ -44,62 +44,28 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="mt-12 border-t border-[var(--border-subtle)] pt-10 pb-12">
+    <footer id="contact" className="mt-16 border-t border-[var(--border-subtle)] pt-14 pb-14">
       {hasContact && (
-        <div className="mb-10 flex flex-col items-center text-center">
-          <h2 className="font-display text-xs font-semibold uppercase tracking-widest text-[var(--text-secondary)]">
-            Direct Contact
-          </h2>
-
-          <div className="mt-5 flex w-full max-w-2xl flex-col items-center gap-3">
-            {validEmails.length > 0 && (
-              <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
-                {validEmails.map(({ email, mailto }) => {
-                  const isCopied = copiedEmail === email;
-                  return (
-                    <div
-                      key={email}
-                      className="surface-card flex items-center justify-between gap-2 rounded-2xl px-4 py-3"
-                    >
-                      <a
-                        href={mailto}
-                        className="group flex min-w-0 items-center gap-2.5 text-xs sm:text-sm font-medium text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 rounded"
-                      >
-                        <Mail className="h-4 w-4 shrink-0 text-violet-500" aria-hidden="true" />
-                        <span className="truncate group-hover:text-violet-400 transition-colors">
-                          {email}
-                        </span>
-                      </a>
-
-                      <button
-                        type="button"
-                        onClick={() => handleCopyEmail(email)}
-                        aria-label={`Copy ${email}`}
-                        title={`Copy ${email}`}
-                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)] text-[var(--text-secondary)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 cursor-pointer"
-                      >
-                        {isCopied ? (
-                          <Check className="h-3.5 w-3.5 text-emerald-500" />
-                        ) : (
-                          <Copy className="h-3.5 w-3.5" />
-                        )}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-
+        <div className="mb-14">
+          <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="font-display text-xs font-bold uppercase tracking-[0.2em] text-cyan-400">
+                Direct Contact
+              </h2>
+              <p className="mt-2 font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">
+                Let&apos;s Connect.
+              </p>
+            </div>
             {(whatsappUrl || telegramUrl) && (
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+              <div className="flex flex-wrap items-center gap-3">
                 {whatsappUrl && (
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="surface-card inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+                    className="nexus-panel inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-[var(--text-primary)]"
                   >
-                    <WhatsAppIcon className="h-4 w-4 text-emerald-500" />
+                    <WhatsAppIcon className="h-4 w-4 text-emerald-400" />
                     <span>WhatsApp</span>
                   </a>
                 )}
@@ -108,21 +74,61 @@ export const Footer: React.FC = () => {
                     href={telegramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="surface-card inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-medium text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+                    className="nexus-panel inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-[var(--text-primary)]"
                   >
-                    <TelegramIcon className="h-4 w-4 text-sky-500" />
+                    <TelegramIcon className="h-4 w-4 text-sky-400" />
                     <span>Telegram</span>
                   </a>
                 )}
               </div>
             )}
           </div>
+
+          {validEmails.length > 0 && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {validEmails.map(({ email, mailto }) => {
+                const isCopied = copiedEmail === email;
+                return (
+                  <div
+                    key={email}
+                    className="nexus-panel flex items-center justify-between gap-3 rounded-2xl px-5 py-4"
+                  >
+                    <a
+                      href={mailto}
+                      className="group flex min-w-0 items-center gap-3 text-sm font-semibold text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400 rounded"
+                    >
+                      <Mail className="h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" />
+                      <span className="truncate group-hover:text-cyan-300 transition-colors">
+                        {email}
+                      </span>
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => handleCopyEmail(email)}
+                      aria-label={`Copy ${email}`}
+                      title={`Copy ${email}`}
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)]/80 text-[var(--text-secondary)] transition-colors hover:border-cyan-400/50 hover:text-cyan-400 cursor-pointer"
+                    >
+                      {isCopied ? (
+                        <Check className="h-3.5 w-3.5 text-emerald-400" />
+                      ) : (
+                        <Copy className="h-3.5 w-3.5" />
+                      )}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 
-      <div className="flex flex-col items-center justify-between gap-2 text-center text-xs text-[var(--text-secondary)] sm:flex-row">
-        <p>&copy; {CURRENT_YEAR} {siteConfig.profile.name}. All rights reserved.</p>
-        <p>{siteConfig.profile.tagline}</p>
+      <div className="flex flex-col items-center justify-between gap-3 border-t border-[var(--border-subtle)] pt-8 text-center text-xs text-[var(--text-secondary)] sm:flex-row">
+        <p className="font-display font-semibold tracking-wider uppercase text-[var(--text-primary)]">
+          WEB3GAMER <span className="text-cyan-400">//</span> NEXUS
+        </p>
+        <p>&copy; {CURRENT_YEAR} {siteConfig.profile.name}. {siteConfig.profile.tagline}</p>
       </div>
     </footer>
   );

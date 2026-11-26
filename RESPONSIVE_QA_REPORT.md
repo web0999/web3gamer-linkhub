@@ -9,3 +9,4 @@
 
 ## Browser Automation Note
 - Automated Chrome DevTools inspection was not available in this environment (`DevToolsActivePort` not active).
+

@@ -6,3 +6,4 @@
 - **Tab Visibility Pause**: `visibilitychange` listener pauses rendering when the tab is backgrounded.
 - **GPU-Composited Transforms**: Card tilts, orbital rings, and light sweeps use `transform` and `opacity` rather than layout-thrashing properties.
 - **Reduced Motion Support**: Canvas loop and CSS keyframe animations respect `prefers-reduced-motion: reduce`.
+

@@ -1,8 +1,17 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { siteConfig, type SocialPlatform } from '../config/site.config';
 import { formatWhatsAppUrl, isValidHttpUrl } from '../utils/validation';
 import { platformMeta } from './PlatformIcons';
 import { TiltCard } from './TiltCard';
+
+const platformAccent: Record<SocialPlatform, string> = {
+  telegram: 'group-hover:text-sky-400',
+  youtube: 'group-hover:text-red-400',
+  instagram: 'group-hover:text-pink-400',
+  github: 'group-hover:text-cyan-300',
+  whatsapp: 'group-hover:text-emerald-400',
+};
 
 export const SocialLinks: React.FC = () => {
   const entries = (Object.keys(siteConfig.socials) as SocialPlatform[])
@@ -18,21 +27,34 @@ export const SocialLinks: React.FC = () => {
   }
 
   return (
-    <section aria-label="Social connections" className="pb-10">
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <section id="socials" aria-labelledby="socials-heading" className="py-12 sm:py-16">
+      <div className="mb-6 flex items-baseline justify-between">
+        <h2
+          id="socials-heading"
+          className="font-display text-xs font-bold uppercase tracking-[0.2em] text-cyan-400"
+        >
+          Social Universe
+        </h2>
+        <span className="text-xs text-[var(--text-secondary)]">Direct Channels</span>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
         {entries.map(({ platform, url }) => {
           const { label, Icon } = platformMeta[platform];
           return (
-            <TiltCard key={platform}>
+            <TiltCard key={platform} className="flex-1 min-w-[145px]">
               <a
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Open ${label}`}
-                className="surface-card group flex items-center justify-center gap-3 rounded-2xl px-4 py-3.5 text-sm font-medium text-[var(--text-primary)] hover:border-violet-500/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+                className="nexus-panel group flex items-center justify-between gap-3 rounded-2xl px-5 py-4 text-sm font-semibold text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
               >
-                <Icon className="h-4 w-4 shrink-0 text-[var(--text-secondary)] transition-colors group-hover:text-violet-500" />
-                <span>{label}</span>
+                <div className="flex items-center gap-3">
+                  <Icon className={`h-5 w-5 shrink-0 text-[var(--text-secondary)] transition-colors ${platformAccent[platform]}`} />
+                  <span>{label}</span>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-[var(--text-secondary)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-cyan-400" aria-hidden="true" />
               </a>
             </TiltCard>
           );
