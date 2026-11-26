@@ -1,5 +1,8 @@
 # Web3Gamer — Personal Link Hub
 
+**Live Website**: https://web3gamer-linkhub.froukkkje.workers.dev/  
+**GitHub Repository**: https://github.com/web0999/web3gamer-linkhub
+
 A modern, high-craft personal link hub for **Web3Gamer** (`Creator | Gamer | Developer`), built with React, TypeScript, Vite, and Tailwind CSS v4.
 
 ## Features
