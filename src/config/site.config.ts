@@ -119,9 +119,9 @@ export const siteConfig: SiteConfig = {
     },
     {
       id: 'my-projects',
-      title: 'My Projects',
-      description: 'Explore open-source tools, experiments, and builds.',
-      url: '#projects',
+      title: 'Web3Gamer LinkHub Repo',
+      description: 'Source code, NEXUS 3D motion system, and deployment setup on GitHub.',
+      url: 'https://github.com/web0999/web3gamer-linkhub',
       icon: 'folder',
       enabled: true,
       featured: false,

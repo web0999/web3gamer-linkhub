@@ -56,8 +56,12 @@ export const CinematicEmblem: React.FC = () => {
       />
 
       {/* 3D Interactive Emblem Core */}
-      <div
-        className="animate-float relative flex h-48 w-48 sm:h-60 sm:w-60 lg:h-68 lg:w-68 items-center justify-center overflow-hidden rounded-full border border-cyan-400/30 bg-[#050814] shadow-[0_0_60px_rgba(34,211,238,0.22)] transition-transform duration-300 ease-out"
+      <a
+        href="https://github.com/web0999/web3gamer-linkhub"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open Web3Gamer LinkHub GitHub repository"
+        className="animate-float relative flex h-48 w-48 sm:h-60 sm:w-60 lg:h-68 lg:w-68 items-center justify-center overflow-hidden rounded-full border border-cyan-400/30 bg-[#050814] shadow-[0_0_60px_rgba(34,211,238,0.22)] transition-transform duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
         style={{
           transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
           transformStyle: 'preserve-3d',
@@ -89,7 +93,7 @@ export const CinematicEmblem: React.FC = () => {
           aria-hidden="true"
           className="animate-light-sweep pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -skew-x-12"
         />
-      </div>
+      </a>
     </div>
   );
 };

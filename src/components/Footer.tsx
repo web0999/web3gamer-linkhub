@@ -128,7 +128,17 @@ export const Footer: React.FC = () => {
         <p className="font-display font-semibold tracking-wider uppercase text-[var(--text-primary)]">
           WEB3GAMER <span className="text-cyan-400">//</span> NEXUS
         </p>
-        <p>&copy; {CURRENT_YEAR} {siteConfig.profile.name}. {siteConfig.profile.tagline}</p>
+        <div className="flex items-center gap-4">
+          <a
+            href="https://github.com/web0999/web3gamer-linkhub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 hover:underline"
+          >
+            GitHub Repo
+          </a>
+          <p>&copy; {CURRENT_YEAR} {siteConfig.profile.name}. {siteConfig.profile.tagline}</p>
+        </div>
       </div>
     </footer>
   );
