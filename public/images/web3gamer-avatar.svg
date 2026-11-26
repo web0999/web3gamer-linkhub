@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="bg-obsidian" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#181822"/>
+      <stop offset="55%" stop-color="#0B0B10"/>
+      <stop offset="100%" stop-color="#050507"/>
+    </radialGradient>
+    <linearGradient id="metal-rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#3B82F6" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#6D28D9" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="metal-face" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#F4F4F5"/>
+      <stop offset="45%" stop-color="#D4D4D8"/>
+      <stop offset="100%" stop-color="#71717A"/>
+    </linearGradient>
+    <linearGradient id="accent-slash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <filter id="soft-glow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Outer obsidian disc -->
+  <circle cx="256" cy="256" r="244" fill="url(#bg-obsidian)"/>
+  <circle cx="256" cy="256" r="242" stroke="url(#metal-rim)" stroke-width="4"/>
+  <circle cx="256" cy="256" r="214" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="1.5"/>
+
+  <!-- Subtle geometric tech rings -->
+  <path d="M96 256 A160 160 0 0 1 256 96" stroke="#8B5CF6" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round"/>
+  <path d="M416 256 A160 160 0 0 1 256 416" stroke="#3B82F6" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- W3G Monogram -->
+  <g filter="url(#soft-glow)">
+    <!-- W -->
+    <path d="M108 198 L138 314 L172 232 L206 314 L236 198" stroke="url(#metal-face)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- 3 / Accent -->
+    <path d="M254 198 H308 L278 248 H306 C322 248 332 260 332 278 C332 298 318 314 294 314 H254" stroke="url(#accent-slash)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- G -->
+    <path d="M408 214 C396 202 380 196 364 198 C338 202 324 226 324 256 C324 290 342 314 374 314 C394 314 408 302 412 284 V260 H376" stroke="url(#metal-face)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+
